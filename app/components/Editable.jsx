@@ -10,16 +10,23 @@ export default ({editing, value, onEdit, className, ...props}) => {
       {...props} />;
   }
 
-  return <span className={classnames('value', className)} {...props}>{value}</span>
+  return <span className={classnames('value', className)} {...props}>
+    {value}
+  </span>;
 }
 
 class Edit extends React.Component {
   render() {
-    const {className, value, ...props} = this.props;
+    const {className, value, onEdit, ...props} = this.props;
 
     return <input
       type="text"
       className={classnames('edit', className)}
+      ref={
+        element => element ?
+        element.selectionStart = value.length :
+        null
+      }
       autoFocus={true}
       defaultValue={value}
       onBlur={this.finishEdit}
