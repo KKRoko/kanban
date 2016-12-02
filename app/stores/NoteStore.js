@@ -1,4 +1,3 @@
-import uuid from 'uuid';
 
 import NoteActions from '../actions/NoteActions';
 
@@ -6,16 +5,7 @@ export default class NoteStore {
   constructor() {
 
     this.bindActions(NoteActions);
-    this.notes = [
-  {
-    id: uuid.v4(),
-    task: 'Yo Why is this not deleting'
-  },
-  {
-    id: uuid.v4(),
-    task: 'clean apt'
-  }
-];
+    this.notes = [];
   }
 
   create(note) {
